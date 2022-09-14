@@ -3,23 +3,26 @@
   margin: 30px auto;
 }
 
-body {
+ body {
   margin: 20px auto;
-  text-align: center;
-  background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  
+  background: linear-gradient(to top, #8fcdf3 0%, #e2ebf0 100%);
 }
 
-h1 {
+.App h1 {
   margin-top: 30px;
+   text-align: center;
   color: rgb(25, 7, 98);
 }
 
 p {
   line-height: normal;
+   text-align: center;
 }
 
 h2 {
   color: rgb(25, 7, 98);
+   text-align: center;
 }
 
 img {
@@ -29,11 +32,16 @@ img {
 
 a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 h6 {
   font-size: 13px;
+}
+
+footer {
+    font-size: 15px;
+     text-align: center;
 }
 
 .col-2 {
