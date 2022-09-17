@@ -9,64 +9,7 @@
   background: linear-gradient(to top, #8fcdf3 0%, #e2ebf0 100%);
 }
 
-.App h1 {
-  margin-top: 30px;
-   text-align: center;
-  color: rgb(25, 7, 98);
-}
-
-p {
-  line-height: normal;
-   text-align: center;
-}
-
-h2 {
-  color: rgb(25, 7, 98);
-   text-align: center;
-}
-
-img {
-  width: 50px;
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-  font-size: 15px;
-}
-
-h6 {
-  font-size: 13px;
-}
-
 footer {
     font-size: 15px;
      text-align: center;
-}
-
-.col-2 {
-  border-style: double;
-  border-color: rgb(142, 191, 229);
-  border-radius: 10px;
-  margin: 20px auto;
-}
-
-.col-4 {
-  font-size: 25px;
-}
-
-.search-form {
-  margin-bottom: 20px;
-}
-
-#description {
-  font-size: 20px;
-}
-
-#description:first-letter {
-  text-transform: capitalize;
-}
-
-#date {
-  font-size: 20px;
 }

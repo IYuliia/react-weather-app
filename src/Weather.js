@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Weather.css';
+import axios from 'axios';
 
-export default function Weather() {
-   let weatherData = {
-    city: "New York",
-    date: "Tuesday 10:08",
-    description: "Clear Sky",
-    temperature: "26",
-    imgUrl: "https://www.freeiconspng.com/images/sun",
-    pressure: "1017",
-    humidity: "17",
-    wind: "7"
-  };
+export default function Weather(props) {
 
+    
+    const [weatherData, setWeatherData] = useState ({ready : false});
+
+    function handleResponse (response) {
+        console.log (response.data);
+        setWeatherData ({
+            ready: true,
+            desription: response.data.weather[0].description,
+            iconUrl: "https://www.iconspng.com/images/weather.jpg",
+            temperature: response.data.main.temp,
+            date: "Tuesday 10:08",
+            pressure: response.data.main.pressure,
+            humidity: response.data.main.humidity,
+            wind: response.data.wind.speed,
+            city: response.data.name,
+        });
+    }
+
+   
+if (weatherData.ready) {
   return (
     <div>
       <div className="Weather">
@@ -22,7 +33,7 @@ export default function Weather() {
               <input
                 type="search"
                 placeholder="Type a city..."
-                autofocus="on"
+                autoFocus="on"
                 autoComplete="off"
                 className="form-control shadow-sm"
               />
@@ -42,21 +53,32 @@ export default function Weather() {
           </div>
         </form>
 
-        <h1> {weatherData.city}</h1>
+        <h1> {weatherData.city} </h1>
 
-        <p>
-          {weatherData.date}
+        <ul>
+          <li> {weatherData.date} </li>
 
-          <div id="description"> </div>
-          <img src={weatherData.imgUrl} alt={weatherData.description} />
-        </p>
+          <li className = "text-capitalize"> {weatherData.description} </li>
+        
 
-        <h2>
-          <div className="weather-temperature">
-            {weatherData.temperature}
-            <span className="units">˚C</span>
-          </div>
-        </h2>
+ 
+         <li className = "clearfix">
+          <img 
+          src= {weatherData.iconUrl} 
+          alt={weatherData.description} 
+          className = "float-left"
+          />
+          </li>
+
+
+
+        <li className="temperature">
+            {Math.round(weatherData.temperature)}
+            <span className="unit">˚C</span>  
+        </li>
+         
+      
+</ul>
         <hr />
         <div className="buttons">
           <div className="row">
@@ -86,4 +108,11 @@ export default function Weather() {
       <hr />
     </div>
   );
+} else {
+    const apiKey = "3c6fa7eb1509f433df6d22a9b1a8b999";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse); 
+
+    return "Loading...";
+}
 }
